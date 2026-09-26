@@ -1,0 +1,4 @@
+interface:
+  display_name: "文章深度改写"
+  short_description: "改写文字及 TXT、DOCX 文档，支持 0–9 强度"
+  default_prompt: "Use $article-rewriter to rewrite this article at intensity 5."

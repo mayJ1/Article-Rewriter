@@ -95,7 +95,9 @@ def ensure_config_file() -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(
         "# 文章改写 Skill 配置\n"
-        "# 将购买到的 API Key 填写在下面的双引号内，然后保存文件。\n"
+        "# 请自行购买并创建小猫零AI API Key：https://www.qqat.cn?agent=N3K4ZWWE\n"
+        "# 上述链接带有推荐参数；套餐、价格和有效期以官方页面为准。\n"
+        "# 将你自己的 API Key 填写在下面的双引号内，然后保存文件。\n"
         'api_key: ""\n',
         encoding="utf-8",
     )
@@ -473,7 +475,10 @@ def command_config_status(_args: argparse.Namespace) -> dict[str, Any]:
         "masked_key": mask_key(api_key),
         "config_path": str(path),
         "config_directory": str(path.parent),
-        "action_required": "" if api_key else "请打开 config.yaml，将 API Key 填入 api_key 后保存。",
+        "action_required": "" if api_key else (
+            "请先在 https://www.qqat.cn?agent=N3K4ZWWE 自行购买并创建 API Key，"
+            "再打开 config.yaml，将 Key 填入 api_key 后保存。"
+        ),
     }
 
 
@@ -482,7 +487,8 @@ def create_client() -> RewriteClient:
     if not api_key:
         raise RewriteError(
             "API_KEY_REQUIRED",
-            f"尚未配置 API Key。请打开 {_config_path()}，将 Key 填入 api_key 后保存。",
+            f"尚未配置 API Key。请先在 https://www.qqat.cn?agent=N3K4ZWWE "
+            f"自行购买并创建 Key，再打开 {_config_path()}，将 Key 填入 api_key 后保存。",
         )
     return RewriteClient(api_key, base_url)
 

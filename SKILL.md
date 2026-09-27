@@ -5,7 +5,7 @@ description: Rewrite Chinese or multilingual articles from pasted text, TXT, Mar
 
 # Article Rewriter
 
-Use the bundled portable client to submit one complete article, wait for the asynchronous task, and return the rewritten article. Keep the skill provider-neutral in user-facing text.
+Use the bundled portable client to submit one complete article to the Xiaomao Zero AI (小猫零AI) paid API, wait for the asynchronous task, and return the rewritten article. Be transparent that this skill is a third-party integration rather than a standalone or self-developed rewrite model.
 
 ## Inputs
 
@@ -36,6 +36,7 @@ python scripts/rewrite_article.py config-status
 This command creates a user-level `config.yaml` template when it does not exist. If `configured` is `false`, stop before submitting a paid request and tell the user:
 
 - An API Key has not been configured.
+- The user can purchase and create their own API Key at `https://www.qqat.cn?agent=N3K4ZWWE`.
 - Open the exact `config_path` returned by the command.
 - Fill the purchased key into `api_key: ""`, save the file, and then ask the agent to continue.
 
